@@ -1,16 +1,19 @@
 #!/bin/bash
 #
-#       Updated 18/10/2018
+#       Created: Oct 2018
+#       Updated: Mar 2021
 #       Block specific ip's attacking the server with iptables
 
 ## Defining VARS ##
 hour=`date +%H:%M`
 now=`date +%d.%m.%Y`
-user=USERNAME
+#### Enter your username in the workstation/server
+user='<USERNAME>'
 
 ## Clean logs older than 15 Days ##
 /bin/find /home/$user/ -iname "*IPtables-change*" -mtime +15 -exec rm {} \; > /dev/null 2>&1
 
+## Catching and defining VARS
 attack=`netstat -anp | egrep ":80|SYN" | awk '{print $5}' | awk -F":" '{print $4}'| sort | uniq -c | sort -n | tail -1 | awk '{print $1" "$2}'`
 times=`echo $attack | awk '{print $1}'`
 ip=`echo $attack | awk '{print $2}'`
@@ -35,10 +38,10 @@ then
                 ## Add to IPTABLE ##
                 text="-A INPUT -s $ip -m tcp -p tcp --dport 80 -j REJECT"
                 sed -i "62s/REJECT$/REJECT\n$text/" /etc/sysconfig/iptables
-                echo "$hour -  $ip Added to iptables, Found $times Connections to port 80 simultaneously" >> /home/tzahia/$now-IPtables-Change/ips
+                echo "$hour -  $ip Added to iptables, Found $times Connections to port 80 simultaneously" >> /home/$user/$now-IPtables-Change/ips
 
                 ## Reload the IPTABLES service ##
-                /sbin/service iptables reload >/dev/null 2>&1 && echo "IPTABLES service reloaded successfully" >> /home/tzahia/$now-IPtables-Change/ips
+                /sbin/service iptables reload >/dev/null 2>&1 && echo "IPTABLES service reloaded successfully" >> /home/$user/$now-IPtables-Change/ips
                 exit 0
         fi
 fi
