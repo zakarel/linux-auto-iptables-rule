@@ -23,7 +23,7 @@ These instructions will get you a copy of the project up and running on your loc
 1. Cloning the project to you local workstation:
 
 ```
-git clone git@github.com:zakarel/http-brute-blocker
+git clone ggit@github.com:zakarel/Http-Brute-Blocker.git
 ```
 
 ## Configuration
