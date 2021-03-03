@@ -14,6 +14,7 @@ These instructions will get you a copy of the project up and running on your loc
 - text editor
 - Make sure you don't have firewalld installed and running, if you do follow the below link
 - iptables-services package (Use - https://linuxize.com/post/how-to-install-iptables-on-centos-7/)
+- net-tools package (yum install net-tools)
 - A service running on port 80 (nginx/httpd etc...)
 
 
