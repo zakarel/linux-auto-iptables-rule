@@ -1,8 +1,10 @@
 # Http-Brute-Blocker 
 
+<img src="https://img.shields.io/badge/Bash-v5.1.16-gray?style=flat-square">   <img src="https://img.shields.io/badge/Ubuntu-v22.04-orange?style=flat-square">
+
 Auto Blocker for HTTP (port 80) brute force attacks
 Created: Oct 2018
-Updated: Mar 2021
+Updated: Nov 2023
 
 ## Getting Started
 
